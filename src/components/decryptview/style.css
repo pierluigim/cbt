@@ -19,3 +19,7 @@
     background-color: #FFA047!important;
     color: white;
 }
+
+.form-control:focus {
+    color: white;
+}

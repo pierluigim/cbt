@@ -6,6 +6,7 @@ import cryptoRandomString from 'crypto-random-string';
 import {useDispatch, useSelector} from "react-redux";
 import DataRow from "./datarow";
 import {GET_KEY, RESET, SET_FILE_DATA, SET_KEY} from "../../actions";
+import crypto from "../../reducers/crypto";
 
 const Translate = require('react-redux-i18n').Translate;
 const I18n = require('react-redux-i18n').I18n;
@@ -75,6 +76,17 @@ const DecryptView = () => {
             .then((e) => {
 
                 if (e.data) {
+                    try {
+                        let plainKey = atob(cypher.keyBase64);
+                        dispatch(SET_KEY({
+                            key: plainKey
+                        }));
+
+                    } catch (e) {
+                        //todo: display error message
+                        console.log('invalid base64 key');
+                    }
+
                     currentFile.encryptedData = e.data.encryptedFileData;
 
                     decryptAndDownload().then((value) => {
@@ -97,10 +109,6 @@ const DecryptView = () => {
 
             })
     }
-    /*
-45bcab2b-e806-43e3-8998-b122a793b16f
-    OTE1OTQ5MDQzZGU3NTA1MmE1NzRkOGRiNDQyZTQyOWM=
-     */
 
     return (
         <section>
@@ -109,7 +117,7 @@ const DecryptView = () => {
                 <div className="col-6">
                     <div className="form-group mb-3">
                         <label className="mb-3" id="file-id-label"><Translate value="download.hint" /></label>
-                        <input type="text" className="form-control file-id" onChange={(e) => dispatch(SET_FILE_DATA({uuid: e.target.value}))}/>
+                        <input type="text" className="form-control input-dark" onChange={(e) => dispatch(SET_FILE_DATA({uuid: e.target.value}))}/>
                     </div>
                     <div className="form-group">
                         <button className="btn color-orange standard-button" type="submit" onClick={OnSearch}>

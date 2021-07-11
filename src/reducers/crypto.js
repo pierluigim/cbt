@@ -12,10 +12,14 @@ const cryptoReducer = (state = key, action) => {
             }
 
         case "GET_KEY":
-            return {
-                keyPlain: atob(action.payload.key),
-                keyBase64: action.payload.key
+            try {
+                state.keyBase64 = action.payload.key;
+                state.keyPlain = atob(action.payload.key);
+            } catch (e) {
+
             }
+
+            return state;
 
         default:
             return state;
