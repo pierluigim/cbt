@@ -1,8 +1,8 @@
+const databaseName = 'cubbit';
 const database = {
     host: "localhost",
     user: "root",
     password: "",
-    database: "cubbit"
 }
 
 const port = 8000;
@@ -47,13 +47,13 @@ function getFile(filePath) {
 }
 
 // upload
-app.post("/upload", upload.single("file"),  (req, res, next) => {
+app.post("/upload", upload.single("file"),  (req, res) => {
     console.log("Trying to upload file: ", req.body.name);
     let file_uuid = uuidv4();
 
     con.query(
         "INSERT INTO Files (uuid, name, size, mime) VALUES ('" + file_uuid + "', '" + req.body.fileName + "', '" + req.body.fileSize + "', '" + req.body.fileMime + "' )",
-        function (err, result) {
+        function (err) {
             if (err)
                 throw err;
 
@@ -112,5 +112,29 @@ app.post("/download", (req, res) => {
 
 // main
 app.listen(port, () => {
-    console.log('App is running on port 8000');
+
+    // init database
+    con.query('CREATE DATABASE IF NOT EXISTS ' + databaseName, function (err) {
+        if (err)
+            throw err;
+
+        console.log("Database ready");
+    });
+
+    con.query('USE ' + databaseName);
+
+    con.query("CREATE TABLE IF NOT EXISTS `files` (" +
+        'uuid VARCHAR(256) NOT NULL, ' +
+        'name VARCHAR(256) NOT NULL, ' +
+        'size INT(11) NOT NULL, ' +
+        'mime VARCHAR(128) NOT NULL ' +
+        ') ENGINE=InnoDB DEFAULT CHARSET=utf8mb4',
+        function (err) {
+            if (err)
+                throw err;
+
+            console.log("Table ready");
+    });
+
+    console.log('cbt server running on port 8000');
 });
