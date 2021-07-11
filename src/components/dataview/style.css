@@ -1,0 +1,27 @@
+.dataview {
+    border: 1px solid #363636;
+    box-sizing: border-box;
+    border-radius: 3px;
+    position: relative;
+
+}
+.dataview input[type=text] {
+    border: none;
+    width: 100%;
+    height: 40px;
+    padding-right: 123px;
+    background: #292929;
+    color: white;
+    font-size: 14px;
+}
+.dataview .input-group-prepend {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    z-index:9;
+}
+
+.dataview #inputGroupPrepend2 {
+    background-color: #009EFF;
+}

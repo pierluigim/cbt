@@ -1,0 +1,68 @@
+.dropzone-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFA047;
+    min-height: 200px;
+    width: 100%;
+}
+
+.dropzone-inside-box {
+    position: absolute;
+    inset: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px dashed rgba(0, 0, 0, 0.15);
+}
+
+.dropzone-inside-box2 {
+    display: flex;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.dropzone-inside-box2:focus {
+    cursor: all-scroll;
+}
+
+.input-file {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0px;
+    border: 0px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.dropzone-input {
+    margin-block: auto!important;
+    color: black!important;
+}
+
+#dropzone-rectangle {
+    /*position: absolute;*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background: #FFA047;
+    height: 200px!important;
+    padding: 8px;
+    margin: 0;
+}
+
+#dropzone-rectangle-inside {
+    background: rgba(22, 22, 22, 0.16);
+    --bs-gutter-x: 0px;
+    border: 1px dashed #363636;
+    box-sizing: border-box;
+}
+
+.margin-none {
+    margin: 0!important;
+}
+
+h5 {
+    font-size: 16px!important;
+}

@@ -1,0 +1,42 @@
+.min-size-input {
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.dropzone-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFA047;
+    min-height: 200px;
+    width: 100%;
+}
+
+.dropzone-inside-box {
+    position: absolute;
+    inset: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px dashed rgba(0, 0, 0, 0.15);
+}
+
+.dropzone-inside-box2 {
+    display: flex;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.dropzone-inside-box2:focus {
+    cursor: all-scroll;
+}
+
+.input-file {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0px;
+    border: 0px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}

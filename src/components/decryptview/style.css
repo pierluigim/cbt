@@ -1,0 +1,21 @@
+#file-id-input {
+    background-color: #292929;
+    color: white;
+    font-size: 12px;
+    padding: 5px!important;
+    border: none;
+}
+
+#file-id-label {
+    color: white;
+    font-size: 12px;
+}
+
+.standard-button {
+    width: 216px;
+}
+
+.color-orange {
+    background-color: #FFA047!important;
+    color: white;
+}
